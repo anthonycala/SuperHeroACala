@@ -40,7 +40,8 @@ namespace SuperHeroCala.Controllers
             try
             {
                 // TODO: Add insert logic here
-
+                context.SuperHeroes.Add(superHero);
+                context.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
