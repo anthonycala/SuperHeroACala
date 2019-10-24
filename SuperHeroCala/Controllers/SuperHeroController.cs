@@ -53,12 +53,13 @@ namespace SuperHeroCala.Controllers
         // GET: SuperHero/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            SuperHero superhero = context.SuperHeroes.Where(s => s.ID == id).FirstOrDefault();
+            return View(superhero);
         }
 
         // POST: SuperHero/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, SuperHero superHero)
         {
             try
             {
