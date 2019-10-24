@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SuperHeroCala.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,11 @@ namespace SuperHeroCala.Controllers
 {
     public class SuperHeroController : Controller
     {
+        ApplicationDbContext context;
+        public SuperHeroController()
+        {
+            context = new ApplicationDbContext();
+        }
         // GET: SuperHero
         public ActionResult Index()
         {
@@ -23,12 +29,13 @@ namespace SuperHeroCala.Controllers
         // GET: SuperHero/Create
         public ActionResult Create()
         {
-            return View();
+            SuperHero superHero = new SuperHero();
+            return View(superHero);
         }
 
         // POST: SuperHero/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(SuperHero superHero)
         {
             try
             {
