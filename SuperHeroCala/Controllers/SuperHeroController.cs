@@ -17,7 +17,8 @@ namespace SuperHeroCala.Controllers
         // GET: SuperHero
         public ActionResult Index()
         {
-            return View();
+            List<SuperHero> superHeroes = context.SuperHeroes.ToList();
+            return View(superHeroes);
         }
 
         // GET: SuperHero/Details/5
@@ -81,7 +82,8 @@ namespace SuperHeroCala.Controllers
         // GET: SuperHero/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            SuperHero superhero = context.SuperHeroes.Where(s => s.ID == id).FirstOrDefault();
+            return View(superhero);
         }
 
         // POST: SuperHero/Delete/5
@@ -90,6 +92,10 @@ namespace SuperHeroCala.Controllers
         {
             try
             {
+                superHero = context.SuperHeroes.Where(s => s.ID == id).FirstOrDefault();
+                context.SuperHeroes.Remove(superHero);
+                context.SaveChanges();
+                return View();
                 // TODO: Add delete logic here
 
                 return RedirectToAction("Index");
