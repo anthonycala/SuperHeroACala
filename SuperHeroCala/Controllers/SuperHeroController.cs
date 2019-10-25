@@ -24,7 +24,8 @@ namespace SuperHeroCala.Controllers
         // GET: SuperHero/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            SuperHero superHero = context.SuperHeroes.Where(s => s.ID == id).FirstOrDefault();
+            return View(superHero);
         }
 
         // GET: SuperHero/Create
@@ -71,6 +72,7 @@ namespace SuperHeroCala.Controllers
                 dbsuperhero.primarySuperHeroAbility = superHero.primarySuperHeroAbility;
                 dbsuperhero.secondarySuperHeroAbility = superHero.secondarySuperHeroAbility;
                 dbsuperhero.catchPhrase = superHero.catchPhrase;
+                context.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
@@ -82,8 +84,8 @@ namespace SuperHeroCala.Controllers
         // GET: SuperHero/Delete/5
         public ActionResult Delete(int id)
         {
-            SuperHero superhero = context.SuperHeroes.Where(s => s.ID == id).FirstOrDefault();
-            return View(superhero);
+            SuperHero superHero = context.SuperHeroes.Where(s => s.ID == id).FirstOrDefault();
+            return View(superHero);
         }
 
         // POST: SuperHero/Delete/5
@@ -95,9 +97,7 @@ namespace SuperHeroCala.Controllers
                 superHero = context.SuperHeroes.Where(s => s.ID == id).FirstOrDefault();
                 context.SuperHeroes.Remove(superHero);
                 context.SaveChanges();
-                return View();
                 // TODO: Add delete logic here
-
                 return RedirectToAction("Index");
             }
             catch
