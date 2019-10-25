@@ -86,7 +86,7 @@ namespace SuperHeroCala.Controllers
 
         // POST: SuperHero/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, SuperHero superHero)
         {
             try
             {

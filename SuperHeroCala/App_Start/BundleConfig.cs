@@ -23,7 +23,7 @@ namespace SuperHeroCala
                       "~/Scripts/bootstrap.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
+                      "~/Content/bootstrapYeti.css",
                       "~/Content/site.css"));
         }
     }
