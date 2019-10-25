@@ -64,7 +64,12 @@ namespace SuperHeroCala.Controllers
             try
             {
                 // TODO: Add update logic here
-
+                SuperHero dbsuperhero = context.SuperHeroes.Where(s => s.ID == id).FirstOrDefault();
+                dbsuperhero.superHeroName = superHero.superHeroName;
+                dbsuperhero.alterEgo = superHero.alterEgo;
+                dbsuperhero.primarySuperHeroAbility = superHero.primarySuperHeroAbility;
+                dbsuperhero.secondarySuperHeroAbility = superHero.secondarySuperHeroAbility;
+                dbsuperhero.catchPhrase = superHero.catchPhrase;
                 return RedirectToAction("Index");
             }
             catch
