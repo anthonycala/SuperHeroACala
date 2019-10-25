@@ -102,7 +102,7 @@ namespace SuperHeroCala.Controllers
             }
             catch
             {
-                return View();
+                return View(id);
             }
         }
     }
